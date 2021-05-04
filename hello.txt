@@ -3,3 +3,6 @@ git
 hello git
 hello world
 !!
+hello javascript
+hello react-redux
+
