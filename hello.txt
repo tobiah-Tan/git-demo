@@ -11,3 +11,5 @@ master test
 hot-fix test
 
 remote modified the gitdemo
+
+这是一个很好的分布式代码管理工具
