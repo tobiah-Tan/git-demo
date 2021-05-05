@@ -7,3 +7,5 @@ hello javascript
 hello react-redux
 
 hotfix-hello world!
+
+hot-fix test
