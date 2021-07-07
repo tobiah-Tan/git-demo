@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回调函数的ref中回调函数执行的次数</title>
+</head>
+<body>
+<!--    准备好容器-->
+<div id="test1"></div>
+
+<!--引入react核心库-->
+<script type="text/javascript" src="../js/react.development.js"></script>
+<!--引入react-dom，用于支持react操作dom-->
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<!--引入Babel，用于将jsx转换为js-->
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<!--引入prop-types,用于对组件标签进行限制-->
+<script type="text/javascript" src="../js/prop-types.js"></script>
+<script type="text/babel">
+    class Demo extends React.Component{
+        state = {isHot:false}
+        showData = () => {
+            const {input1} = this //this表示的就是实例自身
+            // console.log(this)
+            alert(input1.value)
+        }
+
+        changeWeather = () => {
+            const {isHot} = this.state
+            this.setState({isHot: !isHot})
+        }
+
+        saveInput = (c)=>{
+            this.input1 = c//放在组件实例自身上
+            console.log('@',c)
+        }
+        //创建组件
+        render(){
+            const {isHot} = this.state
+            return (
+                <div>
+                    <h2>今天天气很{isHot ? '炎热':'凉爽'}</h2>
+                    {/*<label>
+                        <input ref={(currentNode)=>{this.input1 = currentNode;console.log('@',currentNode)}} type="text" placeholder="点击按钮提示数据"/>
+                    </label><br/><br/>*/}
+                    <label>
+                        <input ref={this.saveInput} type="text"/>
+                    </label><br/><br/>
+                    <button onClick={this.showData}>提示内容</button>
+                    <button onClick={this.changeWeather}>切换天气</button>
+                </div>
+            )
+        }
+    }
+
+    // 渲染
+    ReactDOM.render(<Demo/>,document.getElementById('test1'))
+</script>
+</body>
+</html>

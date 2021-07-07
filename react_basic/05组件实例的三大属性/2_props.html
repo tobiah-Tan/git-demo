@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件属性props</title>
+</head>
+<body>
+<!--    准备好容器-->
+<div id="test1"></div>
+<div id="test2"></div>
+<div id="test3"></div>
+
+<!--引入react核心库-->
+<script type="text/javascript" src="../js/react.development.js"></script>
+<!--引入react-dom，用于支持react操作dom-->
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<!--引入Babel，用于将jsx转换为js-->
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<!--引入prop-types,用于对组件标签进行限制-->
+<script type="text/javascript" src="../js/prop-types.js"></script>
+
+<script type="text/babel">//此处一定要写babel
+    class Person extends React.Component {
+        //给类自身加方法，用到关键字static
+        //对标签属性进行类型，必要性的限制
+        static propTypes={
+            name:PropTypes.string.isRequired,
+            age:PropTypes.number,
+            sex:PropTypes.string,
+            speak:PropTypes.func//对函数进行限制
+        }
+        //指定默认标签属性值
+        static defaultProps={
+            sex:'男',
+            age:18
+        }
+
+        render() {
+            console.log(this);
+            //解构赋值
+            const {name,age,sex}=this.props;
+            return (
+                <ul>
+                    <li>姓名：{name}</li>
+                    <li>年龄：{age}</li>
+                    <li>性别：{sex}</li>
+                </ul>
+            )
+        }
+    }
+
+    //渲染
+    ReactDOM.render(<Person name="tom" age={18} sex="男" speak={speak}/>, document.getElementById('test1'));//{18}限制为数值格式
+    ReactDOM.render(<Person name="Jerry" age={20} sex="女"/>, document.getElementById('test2'));
+
+    // ReactDOM.render(<Person name="老刘" age="40" sex="男"/>, document.getElementById('test3'))
+    const p = {name:"老李",age:40,sex:"男"}
+    ReactDOM.render(<Person {...p}/>,document.getElementById('test3'))//{...p} 批量传递标签属性
+
+    function speak(){
+        console.log('我会说话的')
+    }
+</script>
+</body>
+</html>

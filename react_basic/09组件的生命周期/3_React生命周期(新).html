@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>react生命周期（新）</title>
+</head>
+<body>
+<!--    准备好容器-->
+<div id="test1"></div>
+
+<!--引入react核心库-->
+<script type="text/javascript" src="../js/react.development.js"></script>
+<!--引入react-dom，用于支持react操作dom-->
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<!--引入Babel，用于将jsx转换为js-->
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<!--引入prop-types,用于对组件标签进行限制-->
+<script type="text/javascript" src="../js/prop-types.js"></script>
+<script type="text/babel">
+    //创建组件
+    class Add extends React.Component{
+        //构造器
+        constructor(props){
+            console.log('add-constructor')
+            super(props)
+            //初始化状态
+            this.state={number:0}
+        }
+
+        addNumber = ()=>{
+            let {number} = this.state//解构赋值
+            number += 1
+            this.setState({number})
+        }
+        //卸载组件按钮
+        death = ()=>{
+            ReactDOM.unmountComponentAtNode(document.getElementById('test1'))
+        }
+        //强制更新按钮的回调,不受阀门的影响
+        force = ()=>{
+            this.forceUpdate()
+        }
+
+        //静态方法，且必须有返回值（null或者状态对象）
+        //若state的值在任何时候都取决于props，那么可以使用（极其罕见的情况，使用概率很低）
+         static getDerivedStateFromProps(props,state){
+            console.log('getDerivedStateFromProps',props,state)
+             return null
+        }
+        //组件挂载完毕的钩子
+        componentDidMount(){
+            console.log('add-componentdidmount')
+        }
+        //组件即将卸载
+        componentWillUnmount(){
+            console.log('add-componentdidunmount')
+        }
+        //控制组件更新的阀门,不写的时候默认永远返回true
+        shouldComponentUpdate(){
+            console.log('add-shouldComponentUpdate')
+            return true
+        }
+        //A snapshot value (or null) must be returned
+        //在更新之前获取快照
+        getSnapshotBeforeUpdate(){
+           console.log(' getSnapshotBeforeUpdate')
+            return 'sichuandaxue'
+        }
+        //组件已经更新,接收三个参数
+        componentDidUpdate(preProps,preState,snapshotValue){
+            console.log('add-componentDidUpdate',preProps,preState,snapshotValue)
+        }
+
+        render(){
+            console.log('add-render')
+            const {number} = this.state
+            return (
+                <div>
+                    <h2>当前求和为{number}</h2>
+                    <button onClick={this.addNumber}>&nbsp;+1 &nbsp; </button>&nbsp;
+                    <button onClick={this.death}>卸载组件</button>&nbsp;
+                    <button onClick={this.force}>不更改内容强制更新一下</button>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Add number={123}/>,document.getElementById('test1'))
+</script>
+</body>
+</html>

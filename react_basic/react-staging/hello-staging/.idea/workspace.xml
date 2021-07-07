@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="42eb25e8-dd67-4611-adb0-49b6c7636dac" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1qmkObjNCOCqrRM2a6KW9HKqWsd" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../demo" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\project_file\Web-front-end\react\react_basic\react-staging\hello-staging\public\css" />
+      <recent name="D:\project_file\Web-front-end\react\react_basic\react-staging\hello-staging\src\Component\Hello" />
+      <recent name="D:\project_file\Web-front-end\react\react_basic\react-staging\hello-staging\React脚手架自带文件" />
+      <recent name="D:\project_file\Web-front-end\react\react_basic\react-staging\hello-staging" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\project_file\Web-front-end\react\react_basic\react-staging\hello-staging" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="42eb25e8-dd67-4611-adb0-49b6c7636dac" name="Default Changelist" comment="" />
+      <created>1617692121990</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617692121990</updated>
+      <workItem from="1617692123091" duration="80000" />
+      <workItem from="1617692237912" duration="6401000" />
+      <workItem from="1617721505580" duration="220000" />
+      <workItem from="1617784426699" duration="13000" />
+      <workItem from="1618021224846" duration="21000" />
+      <workItem from="1618021247105" duration="881000" />
+      <workItem from="1618105576574" duration="1814000" />
+      <workItem from="1618151297946" duration="3221000" />
+      <workItem from="1618192684368" duration="6036000" />
+      <workItem from="1618206023488" duration="759000" />
+      <workItem from="1618213519724" duration="701000" />
+      <workItem from="1618308152288" duration="5000" />
+      <workItem from="1618802687871" duration="484000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>高阶函数-函数柯里化</title>
+</head>
+<body>
+<!--    准备好容器-->
+<div id="test1"></div>
+
+<!--引入react核心库-->
+<script type="text/javascript" src="../js/react.development.js"></script>
+<!--引入react-dom，用于支持react操作dom-->
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<!--引入Babel，用于将jsx转换为js-->
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<!--引入prop-types,用于对组件标签进行限制-->
+<script type="text/javascript" src="../js/prop-types.js"></script>
+<script type="text/babel">
+    //创建组件
+    class Login extends React.Component{
+        //初始化状态
+        state={
+            username:'',
+            password:''
+        }
+
+        handleSubmit=(event)=>{
+            event.preventDefault()
+            //从状态中取值
+            console.log(this)
+            const {username,password}=this.state
+            alert(`输入的用户名是：${username},输入的密码是：${password}`)
+        }
+
+        saveData = (dataType)=>{
+            return (event)=>{
+                this.setState({[dataType]:event.target.value})//[]表示是一个变量，指向datatype表示的字符串
+            }//函数的柯里化
+        }
+
+        render(){
+            return (
+                <form onSubmit={this.handleSubmit}>
+                    用户名：<label>
+                    <input onChange={this.saveData('username')} type="text" name="username"/>
+                </label>&nbsp;
+                    密  码：<label>
+                    <input onChange={this.saveData('password')} type="password" name="password"/>
+                </label>&nbsp;
+                    <button>登录</button>
+                </form>
+            )
+        }
+    }
+    ReactDOM.render(<Login/>,document.getElementById('test1'))
+</script>
+</body>
+</html>

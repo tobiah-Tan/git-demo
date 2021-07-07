@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>引出生命周期</title>
+</head>
+<body>
+<!--    准备好容器-->
+<div id="test1"></div>
+
+<!--引入react核心库-->
+<script type="text/javascript" src="../js/react.development.js"></script>
+<!--引入react-dom，用于支持react操作dom-->
+<script type="text/javascript" src="../js/react-dom.development.js"></script>
+<!--引入Babel，用于将jsx转换为js-->
+<script type="text/javascript" src="../js/babel.min.js"></script>
+<!--引入prop-types,用于对组件标签进行限制-->
+<script type="text/javascript" src="../js/prop-types.js"></script>
+<script type="text/babel">
+    //创建组件
+    //生命周期回调函数 <=> 生命周期钩子函数 <=> 生命周期函数 <=> 生命周期钩子
+    class LifeTime extends React.Component{
+
+        state={
+            opacity:1
+        }
+
+        death = ()=>{
+        //卸载组件
+            ReactDOM.unmountComponentAtNode(document.getElementById('test1'))
+        }
+        //组件挂载完毕
+        componentDidMount(){
+            this.timer=setInterval(()=>{
+                //获取原状态
+                let {opacity} = this.state
+                opacity -= 0.01
+                if (opacity <= 0) opacity = 1
+                this.setState({opacity})
+            },20)
+        }
+
+        //组件即将卸载
+        componentWillUnmount(){
+            //清除定时器
+            clearInterval(this.timer)
+        }
+        render(){
+            return (
+                <div>
+                    <h2 style={{opacity:this.state.opacity}}>特征提取算子LBP运算符</h2>
+                    <button onClick={this.death}>不活了</button>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<LifeTime/>,document.getElementById('test1'))
+</script>
+</body>
+</html>
