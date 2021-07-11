@@ -1,12 +1,12 @@
 import React, { Component,Fragment } from 'react'
-import Parent from './components/8_ErrorBoundary/Parent'
+import Demo from './components/2_lazyLoad/index'
 
 
 export default class Demo extends Component {
     render() {
         return (
             <Fragment>
-                <Parent/>
+                <Demo/>
             </Fragment>
         )
     }
